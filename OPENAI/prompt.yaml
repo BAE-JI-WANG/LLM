@@ -1,0 +1,3 @@
+_type: "prompt"
+template: "과일의 이름은 {name}입니다."
+input_variables: ["name"]
