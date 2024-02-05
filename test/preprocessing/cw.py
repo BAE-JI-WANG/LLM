@@ -26,26 +26,6 @@ if r.status_code == 200 :
             soup2 = BeautifulSoup(cc.text, 'html.parser')
             
             cat = soup2.find('ul','qa_tab')
-
-            try :
-                pga = soup2.find('a','nex0')
-                # print(pga['onclick'])
-                maxpg = int(pga['onclick'].split(',')[2].replace("'",''))
-                qna = str(pga['onclick'].split(',')[3].replace("'",''))
-                seq = int(pga['onclick'].split(',')[4].replace("'",''))
-            except Exception as ex :
-                maxpg = 1
-            
-            for lss in bb.find_all('a') : 
-        if lss['class'][0] == 'ast_all' : continue 
-        # print(pg + lss['href'])
-        cc = requests.get(pg + lss['href'])
-        
-        if cc.status_code == 200 : 
-
-            soup2 = BeautifulSoup(cc.text, 'html.parser')
-            
-            cat = soup2.find('ul','qa_tab')
  
             for lbb in cat.find_all('a') :
                 #subcategory
@@ -62,7 +42,7 @@ if r.status_code == 200 :
                     qna = str(pga['onclick'].split(',')[3].replace("'",''))
                     seq = int(pga['onclick'].split(',')[4].replace("'",''))
                 except Exception as ex :    
-                    print('a')
+                    pass
                 
 
                 #sub에 main page 
@@ -90,4 +70,5 @@ if r.status_code == 200 :
                                 print(ccc.find('a').text)
                                 print(ccc.find('p').text)
 
-    
+                            
+# Main > Subcategory 정보들 가져와서 >  Page로 돌면서 > 하나하나 들어가서 데이터 가져옴
